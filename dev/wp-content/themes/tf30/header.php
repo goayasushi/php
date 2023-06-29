@@ -26,8 +26,18 @@
 	<header id="header">
 		<div class="inner">
 
-			<h1 class="header-logo"><a href="/">TF-30</a></h1><!-- /header-logo -->
-			<div class="header-sub">サブタイトルが入りますサブタイトルが入ります</div><!-- /header-sub -->
+			<!--
+			<h1 class="header-logo"><a href="/">blog title</a></h1>
+			<div class="header-sub">サブタイトルが入りますサブタイトルが入ります</div>
+			ここを動的に置き換える
+			-->
+
+			<?php if (is_front_page()) : //トップページではロゴをh1に、それ以外のページではdivに。 ?>
+			<h1 class="header-logo"><a href="<?php echo home_url('/'); ?>"><?php bloginfo('name'); ?></a></h1><!-- /header-logo -->
+			<?php else : ?>
+			<div class="header-logo"><a href="<?php echo home_url('/'); ?>"><?php bloginfo('name'); ?></a></div><!-- /header-logo -->
+			<?php endif; ?>
+			<div class="header-sub"><?php bloginfo('description'); //ブログのdescriptionを表示 ?></div><!-- /header-sub -->
 
 			<!-- drawer -->
 			<div class="drawer">
@@ -39,13 +49,16 @@
 				<!-- drawer-content -->
 				<div class="drawer-content">
 					<nav class="drawer-nav">
-						<ul class="drawer-list">
-							<li class="m_icon1 menu-item"><a href="#">メニュー1</a></li>
-							<li class="m_icon2 menu-item"><a href="#">メニュー2</a></li>
-							<li class="m_icon3 menu-item"><a href="#">メニュー3</a></li>
-							<li class="m_icon4 menu-item"><a href="#">メニュー4</a></li>
-							<li class="m_icon5 menu-item"><a href="#">メニュー5</a></li>
-						</ul>
+						<?php 
+							wp_nav_menu(
+								array(
+									'depth' => 1,
+									'theme_location' => 'drawer',
+									'container' => '',
+									'menu_class' => 'drawer-list',
+								)
+							);
+						?>
 					</nav>
 				</div><!-- /drawer-content -->
 			</div><!-- /drawer -->
@@ -56,12 +69,15 @@
 	<!-- header-nav -->
 	<nav class="header-nav">
 		<div class="inner">
-			<ul class="header-list">
-				<li class="m_icon1 menu-item"><a href="#">メニュー1</a></li>
-				<li class="m_icon2 menu-item"><a href="#">メニュー2</a></li>
-				<li class="m_icon3 menu-item"><a href="#">メニュー3</a></li>
-				<li class="m_icon4 menu-item"><a href="#">メニュー4</a></li>
-				<li class="m_icon5 menu-item"><a href="#">メニュー5</a></li>
-			</ul>
+			<?php 
+					wp_nav_menu(
+						array(
+							'depth' => 1,
+							'theme_location' => 'global',
+							'container' => '',
+							'menu_class' => 'header-list',
+						)
+					);
+				?>
 		</div><!-- /inner -->
 	</nav><!-- header-nav -->

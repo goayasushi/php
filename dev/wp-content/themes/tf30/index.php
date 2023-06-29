@@ -87,7 +87,7 @@
 				</div><!-- /entries -->
 
 				<!-- pagination -->
-				<?php if(paginate_links();) :?> 
+				<?php if(paginate_links()) :?> 
 					<div class="pagination">
 						<?php 
 							echo paginate_links(
