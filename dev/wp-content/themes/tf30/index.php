@@ -72,7 +72,7 @@
 											$category = get_the_category();
 											if($category[0]): ?>
 												<div class="entry-item-tag"><?php echo $category[0]->cat_name; ?></div><!-- /entry-item-tag -->
-											<?php endif; ?>
+										<?php endif; ?>
 										<time class="entry-item-published" datetime="<?php the_time('c'); ?>"><?php the_time('y/n/j'); ?></time><!-- /entry-item-published -->
 									</div><!-- /entry-item-meta -->
 									<h2 class="entry-item-title"><?php the_title(); ?></h2><!-- /entry-item-title -->
